@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>?</title>
+    <link
+      rel="shortcut icon"
+      href="./Led Zeppelin Symbol.png"
+      type="image/x-icon"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #e7e7e7;
+      }
+      .container {
+        margin: 0;
+        font-size: 2rem;
+        text-align: center;
+        animation: blink 3s infinite;
+      }
+      #album {
+        height: 220px;
+        width: 220px;
+        transition: opacity 0.3s ease-out;
+        opacity: 1;
+        display: none;
+      }
+      #symbol {
+        width: 240px;
+        transition: opacity 0.3s ease-in;
+        opacity: 0;
+        display: none;
+      }
+
+      @keyframes blink {
+        0%,
+        25%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.77;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="song" autoplay loop>
+      <source src="./Stairway to Heaven - Led Zeppelin.mp3" />
+    </audio>
+    <div class="container">
+      <img src="./Led Zeppelin IV.jpg" alt="Led Zeppelin IV" id="album" />
+      <img src="./Led Zeppelin Symbol.png" id="symbol" alt="Led Zeppelin IV" />
+      <br />
+    </div>
+    <script>
+      const album = document.getElementById("album");
+      const symbol = document.getElementById("symbol");
+      const song = document.getElementById("song");
+
+      function change() {
+        album.style.opacity = 0;
+
+        setTimeout(() => {
+          song.play();
+          album.style.display = "none";
+          symbol.style.display = "block";
+          symbol.style.opacity = 1;
+        }, 300);
+      }
+
+      window.onload = function () {
+        album.style.display = "block";
+        album.addEventListener("click", change);
+      };
+    </script>
+  </body>
+</html>
